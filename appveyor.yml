@@ -4,12 +4,18 @@ environment:
       # Node
       - nodejs_version: "6"
 
+# Fix line endings
+init:
+  - git config --global core.autocrlf true
+
 # Install scripts (run after repo cloning)
 install:
   # Get the latest stable version of Node
+  - ps: Write-Host "Installing node..."
   - ps: Install-Product node $env:nodejs_version
 
   # install modules
+  - ps: Write-Host "Installing packages..."
   - npm install
 
 # Post-install test scripts
@@ -19,7 +25,8 @@ test_script:
   - npm --version
 
   # Run tests
+  - ps Write-Host "Running tests..."
   - npm test
 
   # Don't build
-  - build: off
+ build: off
