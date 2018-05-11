@@ -1,6 +1,8 @@
 import webpack from "webpack";
 import path from "path";
 
+/* eslint no-unused-vars: 0 */
+
 export default {
   devtool: "inline-source-map",
   entry: [

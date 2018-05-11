@@ -4,16 +4,42 @@
 	"description": "Javascript Development Environment",
 	"scripts": {
 		"prestart": "babel-node ./build-scripts/pre-start.js",
-		"start": "npm-run-all --parallel security open-src",
+		"start": "npm-run-all --parallel security open-src lint:watch test:watch",
 		"open-src": "babel-node ./build-scripts/server.js",
 		"security": "nsp check",
 		"share": "npm-run-all --parallel open-src lt",
-		"lt": "lt --port 3000 --subdomain trizion"
+		"lt": "lt --port 3000 --subdomain trizion",
+		"lint": "esw webpack.config.* src build-scripts --color",
+		"lint:watch": "npm run lint -- --watch",
+		"test": "mocha --reporter progress ./build-scripts/test.js \"src/**/*.test.js\"",
+		"test:watch": "npm run test -- --watch"
 	},
 	"author": "Antonio Gonzalez",
 	"license": "MIT",
 	"babel": {
 		"presets": "latest"
+	},
+	"eslintConfig": {
+		"root": true,
+		"extends": [
+			"eslint:recommended",
+			"plugin:import/errors",
+			"plugin:import/warnings"
+		],
+		"parserOptions": {
+			"ecmaVersion": 7,
+			"sourceType": "module"
+		},
+		"env": {
+			"browser": true,
+			"node": true,
+			"mocha": true
+		},
+		"rules": {
+			"no-console": 1,
+			"prefer-const": 1,
+			"no-var": 2
+		}
 	},
 	"dependencies": {
 		"whatwg-fetch": "1.0.0"
@@ -21,6 +47,7 @@
 	"devDependencies": {
 		"babel-cli": "6.16.0",
 		"babel-core": "6.17.0",
+		"babel-eslint": "^8.2.3",
 		"babel-loader": "6.2.5",
 		"babel-preset-latest": "6.16.0",
 		"babel-register": "6.16.3",
