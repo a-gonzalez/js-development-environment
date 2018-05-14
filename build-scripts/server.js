@@ -25,6 +25,30 @@ app.get("/", function(request, response)
 	response.sendFile(path.join(__dirname, "../src/index.html"));
 });
 
+app.get("/users", (request, response)=>
+{
+	response.json([
+		{
+			id: 1,
+			firstname: "Abril",
+			lastname: "Gonzalez",
+			email: "abril@gonzalez.org"
+		},
+		{
+			id: 2,
+			firstname: "Karla",
+			lastname: "Gonzalez",
+			email: "karla@gonzalez.org"
+		},
+		{
+			id: 3,
+			firstname: "Vincent",
+			lastname: "Nguyen",
+			email: "vince@mailer.com"
+		}
+	]);
+});
+
 app.listen(port, function(error)
 {
 	if (error)

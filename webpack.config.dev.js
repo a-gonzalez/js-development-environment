@@ -1,10 +1,13 @@
-import webpack from "webpack";
+//import webpack from "webpack";
 import path from "path";
+import HtmlWebpackPlugin from "html-webpack-plugin";
 
 /* eslint no-unused-vars: 0 */
 
 export default {
+  debug: true,
   devtool: "inline-source-map",
+  noInfo: false,
   entry: [
     path.resolve(__dirname, "src/index")
   ],
@@ -15,12 +18,15 @@ export default {
     filename: "bundle.js"
   },
   plugins: [
-
+    new HtmlWebpackPlugin({
+      template: "src/index.html",
+      inject: true
+    })
   ],
   module: {
-    rules: [
-      {test: /\.js$/, exclude: /node_modules/, loaders: ["babel-loader"]},
-      {test: /\.css$/, loaders: ["style-loader", "css-loader"]}
+    loaders: [
+      {test: /\.js$/, exclude: /node_modules/, loaders: ["babel"]},
+      {test: /\.css$/, loaders: ["style", "css"]}
     ]
   }
 }

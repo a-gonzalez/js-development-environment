@@ -4,7 +4,7 @@
 	"description": "Javascript Development Environment",
 	"scripts": {
 		"prestart": "babel-node ./build-scripts/pre-start.js",
-		"start": "npm-run-all --parallel security open-src lint:watch test:watch",
+		"start": "npm-run-all --parallel security open-src lint:watch test:watch start-mock",
 		"open-src": "babel-node ./build-scripts/server.js",
 		"security": "nsp check",
 		"share": "npm-run-all --parallel open-src lt",
@@ -12,7 +12,10 @@
 		"lint": "esw webpack.config.* src build-scripts --color",
 		"lint:watch": "npm run lint -- --watch",
 		"test": "mocha --reporter progress ./build-scripts/test.js \"src/**/*.test.js\"",
-		"test:watch": "npm run test -- --watch"
+		"test:watch": "npm run test -- --watch",
+		"mock": "babel-node build-scripts/generator",
+		"prestart-mock": "npm run mock",
+		"start-mock": "json-server --watch ./src/api/db.json --port 3001"
 	},
 	"author": "Antonio Gonzalez",
 	"license": "MIT",
