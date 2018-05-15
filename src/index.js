@@ -16,12 +16,12 @@ const date_time = new Date().toLocaleString();
 console.log("I would pay %s for this awesome cource!", cost);
 //console.log(`I would pay ${cost} for this course!`);
 
-getUsers().then(result =>
+getUsers().then(users =>
 {
 	let body = "";
-	global.document.getElementsByTagName("span")[0].innerHTML = date_time;
+	global.document.getElementsByTagName("span")[0].innerText = date_time;
 
-	result.forEach(user =>
+	users.forEach(user =>
 	{
 		body += `
 			<tr>

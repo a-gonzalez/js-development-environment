@@ -15,7 +15,11 @@
 		"test:watch": "npm run test -- --watch",
 		"mock": "babel-node build-scripts/generator",
 		"prestart-mock": "npm run mock",
-		"start-mock": "json-server --watch ./src/api/db.json --port 3001"
+		"start-mock": "json-server --watch ./src/api/db.json --port 3001",
+		"clean-dist": "rimraf ./dist && mkdir dist",
+		"prebuild": "npm-run-all clean-dist test lint",
+		"build": "babel-node ./build-scripts/build.js",
+		"postbuild": "babel-node ./build-scripts/distServer.js"
 	},
 	"author": "Antonio Gonzalez",
 	"license": "MIT",
@@ -41,7 +45,7 @@
 		"rules": {
 			"no-console": 1,
 			"prefer-const": 1,
-			"no-var": 2
+			"no-var": 1
 		}
 	},
 	"dependencies": {
