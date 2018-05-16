@@ -20,7 +20,7 @@ app.get("/", function(request, response)
 	response.sendFile(path.join(__dirname, "../dist/index.html"));
 });
 
-app.get("/users", (request, response)=>
+/*app.get("/users", (request, response)=>
 {
 	response.json([
 		{
@@ -42,7 +42,7 @@ app.get("/users", (request, response)=>
 			"email": "vince@mailer.com"
 		}
 	]);
-});
+});*/
 
 app.listen(port, function(error)
 {

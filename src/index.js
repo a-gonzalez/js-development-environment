@@ -26,8 +26,8 @@ getUsers().then(users =>
 		body += `
 			<tr>
 			<td>${user.id}</td>
-			<td>${user.firstname}</td>
-			<td>${user.lastname}</td>
+			<td>${user.firstName}</td>
+			<td>${user.lastName}</td>
 			<td>${user.email}</td>
 			<td><a href="#" data-id="${user.id}" class="delete">Delete</a></td>
 			</tr>`;

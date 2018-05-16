@@ -19,7 +19,8 @@
 		"clean-dist": "rimraf ./dist && mkdir dist",
 		"prebuild": "npm-run-all clean-dist test lint",
 		"build": "babel-node ./build-scripts/build.js",
-		"postbuild": "babel-node ./build-scripts/distServer.js"
+		"postbuild": "babel-node ./build-scripts/distServer.js",
+		"deploy": "surge ./dist"
 	},
 	"author": "Antonio Gonzalez",
 	"license": "MIT",
@@ -49,6 +50,7 @@
 		}
 	},
 	"dependencies": {
+		"surge": "^0.20.1",
 		"whatwg-fetch": "1.0.0"
 	},
 	"devDependencies": {

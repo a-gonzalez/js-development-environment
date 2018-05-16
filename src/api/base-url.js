@@ -5,7 +5,7 @@ export default function getBaseUrl()
 	//console.log("Environment: ", window.location.hostname);
 
 	//return development ? "http://localhost:3001/" : "/";
-	return getQueryStringParameterByName("mock") ? "http://localhost:3001/" : "/";
+	return getQueryStringParameterByName("mock") ? "http://localhost:3001/" : "https://still-scrubland-96803.herokuapp.com/";
 }
 
 function getQueryStringParameterByName(name, url)
